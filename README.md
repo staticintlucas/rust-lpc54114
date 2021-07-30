@@ -13,6 +13,9 @@ cargo install cargo-binutils
 cargo install just
 # Install arm-none-eabi-gcc to build assembly files
 apt install gcc-arm-none-eabi
+# Install pyocd debugger and GDB
+python3 -m pip install -U pyocd
+apt install gdb-multiarch
 ```
 
 ## Build
@@ -20,3 +23,28 @@ apt install gcc-arm-none-eabi
 ```sh
 just build
 ```
+
+## Debugging
+
+### Start the GDB server
+
+```sh
+just start-gdb
+```
+
+### Launch Cortex M4F
+
+```sh
+gdb -x debug.gdb
+```
+
+Note: If you don't have `gdb-multiarch`, you can also use `arm-none-eabi-gdb`
+
+### Launch Cortex M0+ coprocessor
+
+```sh
+gdb -x debug-coproc.gdb
+```
+
+Note: you need to launch the M4F first as it is responsible for flashing the elf image, copying the
+coprocessor's code into RAM, and pulling the M0+ out of reset.

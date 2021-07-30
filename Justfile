@@ -18,6 +18,9 @@ build-coproc:
     cargo objcopy -- -O elf32-littlearm ../../lpc54114-coproc.elf
     cargo objcopy -- -O binary ../../target/lpc54114-coproc.bin
 
+start-gdb:
+    pyocd gdbserver -t lpc54114 --no-wait --semihosting
+
 clean:
     cargo clean
     rm lpc54114-coproc.elf
