@@ -1,5 +1,8 @@
 # Rust LPC54114
 
+My attempt at getting Rust running on a heterogeneous dual-core LPC54114 microcontroller from NXP.
+This chip contains 2 cores, one Cortex-M4F (M4 with FPU) and one Cortex-M0+.
+
 ## Install dependencies
 
 ```sh
